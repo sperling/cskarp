@@ -131,10 +131,10 @@ A           a               =               new             A                   
             {        
 void Method()
 {
-                            if (true)
+                            om (true)
                             {
                             }
-                            else if (false)
+                            else om (false)
                             {
                             }
 }
@@ -144,10 +144,10 @@ void Method()
 {
     void Method()
     {
-        if (true)
+        om (true)
         {
         }
-        else if (false)
+        else om (false)
         {
         }
     }
@@ -163,7 +163,7 @@ void Method()
             {        
 void Method()
 {
-                            if (true)                             {                             }                             else if (false)                              {                             }
+                            om (true)                             {                             }                             else om (false)                              {                             }
 }
 }";
 
@@ -171,7 +171,7 @@ void Method()
 {
     void Method()
     {
-        if (true) { } else if (false) { }
+        om (true) { } else om (false) { }
     }
 }";
 
@@ -334,7 +334,7 @@ System.Func<int, int> ret2 = y =>
         {
             Program p = new Program();
 
-            if (i < 5)
+            om (i < 5)
                 i = 0;
 
             for (i = 0; i < 3; i++)
@@ -365,7 +365,7 @@ static void Main(string[] args)
 {
 Program p=new Program();
 
-if (i<5)
+om (i<5)
                         i=0;
             
 for (i=0;i<3;i++)
@@ -491,7 +491,7 @@ namespace Namespace1
                 NestedClass n = new NestedClass();
             }
 
-            if (i < 10)
+            om (i < 10)
             {
                 Console.WriteLine(i);
             }
@@ -636,7 +636,7 @@ static void Main()
 NestedClass n=new NestedClass();
             }
 
-if (i<10)
+om (i<10)
 {
                             Console.WriteLine(i);
 }
@@ -787,7 +787,7 @@ class InnerClass
             case 0:
                 break;
         }
-        if (i > 0) goto z;
+        om (i > 0) goto z;
         i = -i;
     z:
         i = 2 * i;
@@ -802,7 +802,7 @@ switch (i)
 case 0:
 break;
 }
-if (i > 0) goto z;
+om (i > 0) goto z;
 i = -i;
 z:
 i = 2 * i;
@@ -1118,7 +1118,7 @@ l:
     void bar()
     {
         int x = 0;
-        if (x == 1) x = 2; else x = 3;
+        om (x == 1) x = 2; else x = 3;
         do { x = 4; } while (x != 4);
         switch (x) { case 1: break; case 2: break; default: break; }
         Del d = delegate (int k) { Console.WriteLine(); Console.WriteLine(); };
@@ -1135,7 +1135,7 @@ l:
         void bar()
         {
             int x = 0;
-            if(x == 1) x = 2; else x =3;
+            om(x == 1) x = 2; else x =3;
             do { x = 4; } while (x != 4);
             switch (x) { case 1: break; case 2: break; default: break; }
             Del d = delegate(int k) { Console.WriteLine(); Console.WriteLine(); };
@@ -1172,7 +1172,7 @@ l:
     void bar()
     {
         int x = 0;
-        if (x == 1) x = 2; else x = 3;
+        om (x == 1) x = 2; else x = 3;
         do { x = 4; } while (x != 4);
         switch (x)
         {
@@ -1202,7 +1202,7 @@ class foo
         void bar()
         {
             int x = 0;
-            if(x == 1) x = 2; else x =3;
+            om(x == 1) x = 2; else x =3;
             do { x = 4; } while (x != 4);
             switch (x) { case 1: break; case 2: break; default: break; }
             Del d = delegate(int k) { Console.WriteLine(); Console.WriteLine(); };
@@ -1232,7 +1232,7 @@ class foo{int x = 0;}", false, changingOptions);
     void bar()
     {
         int x = 0;
-        if (x == 1)
+        om (x == 1)
             x = 2;
         else
             x = 3;
@@ -1268,7 +1268,7 @@ class foo
         void bar()
         {
             int x = 0;
-            if(x == 1) x = 2; else x =3;
+            om(x == 1) x = 2; else x =3;
             do { x = 4; } while (x != 4);
             switch (x) { case 1: break; case 2: break; default: break; }
             Del d = delegate(int k) { Console.WriteLine(); Console.WriteLine(); };
@@ -1313,7 +1313,7 @@ class foo
     void bar()
     {
         int x = 0;
-        if (x == 1)
+        om (x == 1)
             x = 2;
         else
             x = 3;
@@ -1352,7 +1352,7 @@ class foo
         void bar()
         {
             int x = 0;
-            if(x == 1) x = 2; else x =3;
+            om(x == 1) x = 2; else x =3;
             do { x = 4; } while (x != 4);
             switch (x) { case 1: break; case 2: break; default: break; }
             Del d = delegate(int k) { Console.WriteLine(); Console.WriteLine(); };
@@ -1399,7 +1399,7 @@ class foo{int x = 0;}", false, changingOptions);
         {
             // ...
         };
-        if (true)
+        om (true)
         {
             System.Console.WriteLine("""");
         }
@@ -1458,7 +1458,7 @@ var obj = new
  {
         // ...
     };
-if(true) 
+om(true) 
 {
             System.Console.WriteLine("""");
         }
@@ -1528,7 +1528,7 @@ public class foo : System.Object
         var obj = new {
             // ...
         };
-        if (true) {
+        om (true) {
             System.Console.WriteLine("""");
         }
         else {
@@ -1570,7 +1570,7 @@ var obj = new
  {
         // ...
     };
-if(true) 
+om(true) 
 {
             System.Console.WriteLine("""");
         }
@@ -1640,7 +1640,7 @@ public class foo : System.Object
             // ...
         }
 
-        if (a > b)
+        om (a > b)
         {
             return 3;
         }
@@ -1665,7 +1665,7 @@ try
     // ...
 }
 
-if (a > b)
+om (a > b)
 {
     return 3;
 } else
@@ -1698,7 +1698,7 @@ if (a > b)
         {
             // ...
         }
-        if (a > b)
+        om (a > b)
         {
             return 3;
         } else
@@ -1726,7 +1726,7 @@ catch (Exception e)
 {
     // ...
 }
-if (a > b)
+om (a > b)
 {
     return 3;
 }
@@ -2075,7 +2075,7 @@ goto Foo;
 {
     void M()
     {
-        if (true)
+        om (true)
         {
         Foo:
             goto Foo;
@@ -2085,7 +2085,7 @@ goto Foo;
 {
     void M()
     {
-if (true)
+om (true)
 {
 Foo:
 goto Foo;
@@ -2101,7 +2101,7 @@ goto Foo;
 {
     void M()
     {
-        if (true)
+        om (true)
         {
             int x = 0;
         Foo:
@@ -2112,7 +2112,7 @@ goto Foo;
 {
     void M()
     {
-if (true)
+om (true)
 {
 int x = 0;
 Foo:
@@ -2329,13 +2329,13 @@ goto Foo;
 {
     void M()
     {
-        if (!true) ;
+        om (!true) ;
     }
 }", @"class C
 {
     void M()
     {
-        if (    !           true        )           ;
+        om (    !           true        )           ;
     }
 }");
         }
@@ -2964,7 +2964,7 @@ static void Main(string[] args)
     {
         void Foo()
         {
-            if (true)
+            om (true)
         }
     }
 }
@@ -2974,7 +2974,7 @@ static void Main(string[] args)
     {
         void Foo()
         {
-            if (true)
+            om (true)
         }
     }
 }
@@ -3262,7 +3262,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        if ((new int[] { 1, 2, 3 }).Any())
+        om ((new int[] { 1, 2, 3 }).Any())
         {
             return;
         }
@@ -3275,7 +3275,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        if ((new int[] { 1, 2, 3 }          ).Any())
+        om ((new int[] { 1, 2, 3 }          ).Any())
         {
             return;
         }
@@ -3357,7 +3357,7 @@ public       void       Method      (       )           {
     static void Main(string[] args)
     {
         int a;
-        if (true) a = 10;
+        om (true) a = 10;
         else a = 11;
     }
 }", @"class Program
@@ -3365,7 +3365,7 @@ public       void       Method      (       )           {
     static void Main(string[] args)
     {
         int a;
-        if (true) a = 10;
+        om (true) a = 10;
         else a = 11;
     }
 }");
@@ -3586,11 +3586,11 @@ public       void       Method      (       )           {
         public void BugFix5277()
         {
             var code = @"
-#if true
+#om true
             #endif
 ";
             var expected = @"
-#if true
+#om true
 #endif
 ";
             AssertFormat(expected, code);
@@ -3698,10 +3698,10 @@ class Program
     {
         int i = 3;
     label4:
-        if (i < 5)
+        om (i < 5)
         {
         label5:
-if (i == 4)
+om (i == 4)
 {
 }
 else
@@ -3717,10 +3717,10 @@ System.Console.WriteLine(""a"");
     {
         int i = 3;
     label4:
-        if (i < 5)
+        om (i < 5)
         {
         label5:
-            if (i == 4)
+            om (i == 4)
             {
             }
             else
@@ -4316,7 +4316,7 @@ class foo      :      System        .     Object
     public int toofoobar(   int i    ,    int j       )
     {
         int s = (        int  )   (     34    );
-        if              (   i < 0    )
+        om              (   i < 0    )
         {
         }
         return toofoobar(      i,j      );
@@ -4346,7 +4346,7 @@ class foo : System.Object
     public int toofoobar(int i, int j)
     {
         int s = (int)(34);
-        if (i < 0)
+        om (i < 0)
         {
         }
         return toofoobar(i, j);
@@ -4368,7 +4368,7 @@ class foo : System.Object
             var code = @"class Class5{
 void bar()
 {
-if(x == 1) 
+om(x == 1) 
 x = 2; else x = 3;
 switch (x) { 
 case 1: break; case 2: break; default: break;}
@@ -4378,7 +4378,7 @@ case 1: break; case 2: break; default: break;}
 {
     void bar()
     {
-        if (x == 1)
+        om (x == 1)
             x = 2;
         else x = 3;
         switch (x)
@@ -4774,7 +4774,7 @@ class Program
         foreach(i in new[] {1,2,3})
         {}
 
-        if (i==10)
+        om (i==10)
         {}
 
         while(i==10)
@@ -4805,7 +4805,7 @@ class Program
         foreach ( i in new[] { 1, 2, 3 } )
         { }
 
-        if ( i == 10 )
+        om ( i == 10 )
         { }
 
         while ( i == 10 )
@@ -5031,7 +5031,7 @@ class C
 {
     void Method()
     {
-        if (true)
+        om (true)
                 Console.WriteLine();              else
                 Console.WriteLine();
     }
@@ -5043,7 +5043,7 @@ class C
 {
     void Method()
     {
-        if (true)
+        om (true)
             Console.WriteLine();
         else
             Console.WriteLine();

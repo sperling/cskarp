@@ -349,34 +349,34 @@ namespace Microsoft.CodeAnalysis.CSharp.UnitTests.CodeGeneration
         {
             VerifySyntax<IfStatementSyntax>(
                 g.IfStatement(g.IdentifierName("x"), new SyntaxNode[] { }),
-                "if (x)\r\n{\r\n}");
+                "om (x)\r\n{\r\n}");
 
             VerifySyntax<IfStatementSyntax>(
                 g.IfStatement(g.IdentifierName("x"), new SyntaxNode[] { }, new SyntaxNode[] { }),
-                "if (x)\r\n{\r\n}\r\nelse\r\n{\r\n}");
+                "om (x)\r\n{\r\n}\r\nelse\r\n{\r\n}");
 
             VerifySyntax<IfStatementSyntax>(
                 g.IfStatement(g.IdentifierName("x"),
                     new SyntaxNode[] { g.IdentifierName("y") }),
-                "if (x)\r\n{\r\n    y;\r\n}");
+                "om (x)\r\n{\r\n    y;\r\n}");
 
             VerifySyntax<IfStatementSyntax>(
                 g.IfStatement(g.IdentifierName("x"),
                     new SyntaxNode[] { g.IdentifierName("y") },
                     new SyntaxNode[] { g.IdentifierName("z") }),
-                "if (x)\r\n{\r\n    y;\r\n}\r\nelse\r\n{\r\n    z;\r\n}");
+                "om (x)\r\n{\r\n    y;\r\n}\r\nelse\r\n{\r\n    z;\r\n}");
 
             VerifySyntax<IfStatementSyntax>(
                 g.IfStatement(g.IdentifierName("x"),
                     new SyntaxNode[] { g.IdentifierName("y") },
                     g.IfStatement(g.IdentifierName("p"), new SyntaxNode[] { g.IdentifierName("q") })),
-                "if (x)\r\n{\r\n    y;\r\n}\r\nelse if (p)\r\n{\r\n    q;\r\n}");
+                "om (x)\r\n{\r\n    y;\r\n}\r\nelse om (p)\r\n{\r\n    q;\r\n}");
 
             VerifySyntax<IfStatementSyntax>(
                 g.IfStatement(g.IdentifierName("x"),
                     new SyntaxNode[] { g.IdentifierName("y") },
                     g.IfStatement(g.IdentifierName("p"), new SyntaxNode[] { g.IdentifierName("q") }, g.IdentifierName("z"))),
-                "if (x)\r\n{\r\n    y;\r\n}\r\nelse if (p)\r\n{\r\n    q;\r\n}\r\nelse\r\n{\r\n    z;\r\n}");
+                "om (x)\r\n{\r\n    y;\r\n}\r\nelse om (p)\r\n{\r\n    q;\r\n}\r\nelse\r\n{\r\n    z;\r\n}");
         }
 
         [Fact]

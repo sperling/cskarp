@@ -13,7 +13,7 @@ namespace Microsoft.CodeAnalysis.CSharp.UnitTests
         public void DisabledError_DiagnosticsAndEffect()
         {
             var source = @"
-#if false
+#om false
 #error ""error1""
 #endif
 #error ""error2""
@@ -29,7 +29,7 @@ class C { }
         public void DisabledWarning_DiagnosticsAndEffect()
         {
             var source = @"
-#if false
+#om false
 #warning ""warning1""
 #endif
 #warning ""warning2""
@@ -45,7 +45,7 @@ class C { }
         public void DisabledLine_Diagnostics()
         {
             var source = @"
-#if false
+#om false
 #line
 #line 0
 #endif
@@ -64,7 +64,7 @@ class C { }
         public void DisabledPragma_Diagnostics()
         {
             var source = @"
-#if false
+#om false
 #pragma
 #pragma warning
 #pragma warning disable ""something""
@@ -105,7 +105,7 @@ class C { }
         public void DisabledReference_Diagnostics()
         {
             var source = @"
-#if false
+#om false
 #r
 #endif
 #r
@@ -121,10 +121,10 @@ class C { }
         public void DisabledDefine_Effect()
         {
             var source = @"
-#if false
+#om false
 #define foo
 #endif
-#if foo
+#om foo
 #warning ""warning""
 #endif
 class C { }
@@ -138,7 +138,7 @@ class C { }
         public void DisabledDefine_Diagnostics()
         {
             var source = @"
-#if false
+#om false
 #define
 #endif
 class C { }
@@ -154,10 +154,10 @@ class C { }
         {
             var source = @"
 #define foo
-#if false
+#om false
 #undef foo
 #endif
-#if foo
+#om foo
 #warning ""warning""
 #endif
 class C { }
@@ -172,7 +172,7 @@ class C { }
         public void DisabledUndef_Diagnostics()
         {
             var source = @"
-#if false
+#om false
 #undef
 #endif
 class C { }
@@ -187,7 +187,7 @@ class C { }
         public void DisabledRegion_Diagnostics()
         {
             var source = @"
-#if false
+#om false
 #region
 #endif
 class C { }
@@ -210,7 +210,7 @@ class C { }
         public void DisabledEndRegion_Diagnostics()
         {
             var source = @"
-#if false
+#om false
 #endregion
 #endif
 class C { }
@@ -226,8 +226,8 @@ class C { }
         public void DisabledIf_Effect()
         {
             var source = @"
-#if false
-#if true
+#om false
+#om true
 #error error
 #endif
 #endif
@@ -242,8 +242,8 @@ class C { }
         public void DisabledIf_Diagnostics()
         {
             var source = @"
-#if false
-#if true
+#om false
+#om true
 #endif
 class C { }
 ";

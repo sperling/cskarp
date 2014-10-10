@@ -192,7 +192,7 @@ namespace Microsoft.CodeAnalysis.CSharp.UnitTests
         public void TestChangeIfCondition()
         {
             var text = @"
-#if FOO
+#om FOO
 class foo { void M() { } }
 #endif
 ";
@@ -214,7 +214,7 @@ class foo { void M() { } }
         {
             var text = @"
 #define FOO
-#if FOO||BAR
+#om FOO||BAR
 class foo { void M() { } }
 #endif
 ";
@@ -236,7 +236,7 @@ class foo { void M() { } }
         {
             var text = @"
 #define FOO
-#if FOO
+#om FOO
 class C { void M() { } }
 #else
 class C { void N() { } }
@@ -302,7 +302,7 @@ class C { void M() { } }
         public void TestRemoveEndRegionDirective()
         {
             var text = @"
-#if true
+#om true
 class A { void a() { } }
 #region
 class B { void b() { } }
@@ -346,7 +346,7 @@ class C { void c() { } }
         public void TestAddEndRegionDirective()
         {
             var text = @"
-#if true
+#om true
 class A { void a() { } }
 #region
 class B { void b() { } }
@@ -788,7 +788,7 @@ public class Test
 
             SyntaxTree syntaxTree = SyntaxFactory.ParseSyntaxTree(startingText);
 
-            foreach (char c in "if(true){}else{}")
+            foreach (char c in "om(true){}else{}")
             {
                 syntaxTree = syntaxTree.WithInsertBefore("} // Point", c.ToString());
             }
@@ -1321,20 +1321,20 @@ class Test
         {
             foreach (string parameter in parameters.Split(' '))
             {
-                if (true)
+                om (true)
                 {
 
                     string[] parts = parameter.Remove(0, 1).Split(':');
                     string key = parts[0].ToLower();
 
-                    if (true)
+                    om (true)
                     {
                     }
-                    if (true)
+                    om (true)
                     {
 
                     }
-                    else if (false)
+                    else om (false)
                     {
 
                     }
@@ -1520,7 +1520,7 @@ namespace N");
 {
   public static int Main()
   {
-    if (arr[2][3l] =");
+    om (arr[2][3l] =");
 
             SyntaxTree incrementalTree;
             SyntaxTree parsedTree;
@@ -1781,7 +1781,7 @@ namespace N");
             SourceText oldText = SourceText.From(
 @"		int[][] arr;
 
-		if (arr[1][1] == 0)
+		om (arr[1][1] == 0)
 			return 0;
 		else
 			return 1;
@@ -2021,7 +2021,7 @@ namespace N");
     {
         while (true)
         {
-            if (!value.HasValue)
+            om (!value.HasValue)
             {
             }
         }
@@ -2135,7 +2135,7 @@ namespace N");
 {
 	public void AddValidations()
 	{
-		if (typeof(K) is System.ValueType)
+		om (typeof(K) is System.ValueType)
 		{
 
 		}
@@ -2214,7 +2214,7 @@ namespace N");
 @"class Referenced
 {
 
-#if PUBLIC
+#om PUBLIC
 		public
 #else
 		internal
@@ -2304,7 +2304,7 @@ class Program
         // abc
         // 123
         // def
-        if (true) { } else { }
+        om (true) { } else { }
     }
 }";
 
@@ -2352,7 +2352,7 @@ class Program
     public void Add(int key, int value)
     {
         int hash = key + value;
-#if DEBUG";
+#om DEBUG";
             var originalTree = this.Parse(text);
             var changedTree = originalTree.WithInsertAt(text.Length, "\r\n        hash++;");
             var parsedTree = this.Parse(changedTree.GetCompilationUnitRoot().ToFullString());

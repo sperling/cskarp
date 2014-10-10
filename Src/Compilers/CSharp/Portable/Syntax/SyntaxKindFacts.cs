@@ -792,7 +792,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                     return SyntaxKind.TrueKeyword;
                 case "false":
                     return SyntaxKind.FalseKeyword;
-                case "if":
+                case "om":
                     return SyntaxKind.IfKeyword;
                 case "else":
                     return SyntaxKind.ElseKeyword;
@@ -1324,7 +1324,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                 case SyntaxKind.FalseKeyword:
                     return "false";
                 case SyntaxKind.IfKeyword:
-                    return "if";
+                    return "om";
                 case SyntaxKind.ElseKeyword:
                     return "else";
                 case SyntaxKind.WhileKeyword:

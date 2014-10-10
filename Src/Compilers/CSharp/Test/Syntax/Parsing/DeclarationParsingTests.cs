@@ -4933,7 +4933,7 @@ class P
 {
 static void Main()
 {
-#if tru\u0065
+#om tru\u0065
 System.Console.WriteLine(""Good, backwards compatible"");
 #else
 System.Console.WriteLine(""Bad, breaking change"");
@@ -4981,7 +4981,7 @@ class P
 static void Main()
 {
 //defined value + two chars (larger than max)
-#if A234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+#om A234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 System.Console.WriteLine(""Good, backwards compatible"");
 #else
 System.Console.WriteLine(""Bad, breaking change"");
