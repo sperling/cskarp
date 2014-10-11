@@ -83,11 +83,11 @@ namespace Microsoft.CodeAnalysis.CSharp.UnitTests
             TestFormatStatement("\t{a;b;}", "{\r\n  a;\r\n  b;\r\n}");
 
             // if
-            TestFormatStatement("if(a)b;", "if (a)\r\n  b;");
-            TestFormatStatement("if(a){b;}", "if (a)\r\n{\r\n  b;\r\n}");
-            TestFormatStatement("if(a){b;c;}", "if (a)\r\n{\r\n  b;\r\n  c;\r\n}");
-            TestFormatStatement("if(a)b;else c;", "if (a)\r\n  b;\r\nelse\r\n  c;");
-            TestFormatStatement("if(a)b;else if(c)d;", "if (a)\r\n  b;\r\nelse if (c)\r\n  d;");
+            TestFormatStatement("om(a)b;", "om (a)\r\n  b;");
+            TestFormatStatement("om(a){b;}", "om (a)\r\n{\r\n  b;\r\n}");
+            TestFormatStatement("om(a){b;c;}", "om (a)\r\n{\r\n  b;\r\n  c;\r\n}");
+            TestFormatStatement("om(a)b;else c;", "om (a)\r\n  b;\r\nelse\r\n  c;");
+            TestFormatStatement("om(a)b;else om(c)d;", "om (a)\r\n  b;\r\nelse om (c)\r\n  d;");
 
             // while
             TestFormatStatement("while(a)b;", "while (a)\r\n  b;");
@@ -312,9 +312,9 @@ namespace Microsoft.CodeAnalysis.CSharp.UnitTests
         {
             TestFormat(SyntaxFactory.DefineDirectiveTrivia(SyntaxFactory.Identifier("a"), false), "#define a\r\n");
             TestFormatTrivia("  #  define a", "#define a\r\n");
-            TestFormatTrivia("#if(a||b)", "#if (a || b)\r\n");
-            TestFormatTrivia("#if(a&&b)", "#if (a && b)\r\n");
-            TestFormatTrivia("  #if a\r\n  #endif", "#if a\r\n#endif\r\n");
+            TestFormatTrivia("#om(a||b)", "#om (a || b)\r\n");
+            TestFormatTrivia("#om(a&&b)", "#om (a && b)\r\n");
+            TestFormatTrivia("  #om a\r\n  #endif", "#om a\r\n#endif\r\n");
 
             TestFormat(
                 SyntaxFactory.TriviaList(
@@ -322,7 +322,7 @@ namespace Microsoft.CodeAnalysis.CSharp.UnitTests
                         SyntaxFactory.IfDirectiveTrivia(SyntaxFactory.IdentifierName("a"), false, false, false)),
                     SyntaxFactory.Trivia(
                         SyntaxFactory.EndIfDirectiveTrivia(false))),
-                "#if a\r\n#endif\r\n");
+                "#om a\r\n#endif\r\n");
 
             // red factories for structured trivia needs to return SyntaxTrivia, not structured node types?
         }
@@ -358,8 +358,8 @@ namespace Microsoft.CodeAnalysis.CSharp.UnitTests
         public void TestFormatWithinDirectives()
         {
             TestFormatDeclaration(
-"class C\r\n{\r\n#if true\r\nvoid Foo(A x) { }\r\n#else\r\n#endif\r\n}\r\n",
-"class C\r\n{\r\n#if true\r\n  void Foo(A x)\r\n  {\r\n  }\r\n#else\r\n#endif\r\n}");
+"class C\r\n{\r\n#om true\r\nvoid Foo(A x) { }\r\n#else\r\n#endif\r\n}\r\n",
+"class C\r\n{\r\n#om true\r\n  void Foo(A x)\r\n  {\r\n  }\r\n#else\r\n#endif\r\n}");
         }
 
         [WorkItem(542887, "DevDiv")]

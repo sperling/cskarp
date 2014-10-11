@@ -2005,7 +2005,7 @@ public class Test
         public void CS1026ERR_CloseParenExpected()
         {
             var test = @"
-#if (fred == barney
+#om (fred == barney
 #endif
 namespace x
 {
@@ -2029,7 +2029,7 @@ namespace x
             var test = @"
 public class Test
 {
-# if true
+# om true
 }
 ";
 
@@ -2886,11 +2886,11 @@ class C
             var test = @"
 class Test
 {
-#if 1=2
+#om 1=2
 #endif
     public static int Main()
     {
-#if 0
+#om 0
         return 0;
 #endif
     }

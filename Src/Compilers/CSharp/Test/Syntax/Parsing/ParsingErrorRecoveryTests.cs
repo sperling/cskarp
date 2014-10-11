@@ -2785,7 +2785,7 @@ class C
         [Fact]
         public void TestStatementAfterLocalDeclarationStart()
         {
-            var text = "class c { void m() { int if (x) y(); } }";
+            var text = "class c { void m() { int om (x) y(); } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -2808,7 +2808,7 @@ class C
         [Fact]
         public void TestStatementAfterLocalRankStart()
         {
-            var text = "class c { void m() { int [ if (x) y(); } }";
+            var text = "class c { void m() { int [ om (x) y(); } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -2832,7 +2832,7 @@ class C
         [Fact]
         public void TestStatementAfterLocalRankComma()
         {
-            var text = "class c { void m() { int [, if (x) y(); } }";
+            var text = "class c { void m() { int [, om (x) y(); } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -2856,7 +2856,7 @@ class C
         [Fact]
         public void TestStatementAfterLocalDeclarationWithMissingSemicolon()
         {
-            var text = "class c { void m() { int a if (x) y(); } }";
+            var text = "class c { void m() { int a om (x) y(); } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -2878,7 +2878,7 @@ class C
         [Fact]
         public void TestStatementAfterLocalDeclarationWithCommaAndMissingSemicolon()
         {
-            var text = "class c { void m() { int a, if (x) y(); } }";
+            var text = "class c { void m() { int a, om (x) y(); } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -2924,7 +2924,7 @@ class C
         [Fact]
         public void TestStatementAfterLocalDeclarationArrayInitializerStart()
         {
-            var text = "class c { void m() { int a = { if (x) y(); } }";
+            var text = "class c { void m() { int a = { om (x) y(); } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -2947,7 +2947,7 @@ class C
         [Fact]
         public void TestStatementAfterLocalDeclarationArrayInitializerExpression()
         {
-            var text = "class c { void m() { int a = { e if (x) y(); } }";
+            var text = "class c { void m() { int a = { e om (x) y(); } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -2970,7 +2970,7 @@ class C
         [Fact]
         public void TestStatementAfterLocalDeclarationArrayInitializerExpressionAndComma()
         {
-            var text = "class c { void m() { int a = { e, if (x) y(); } }";
+            var text = "class c { void m() { int a = { e, om (x) y(); } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -3642,7 +3642,7 @@ class C
         [Fact]
         public void TestStatementAfterIndexerStart()
         {
-            var text = "class c { void m() { ++a[ if(e) {} } }";
+            var text = "class c { void m() { ++a[ om(e) {} } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -3668,7 +3668,7 @@ class C
         [Fact]
         public void TestStatementAfterIndexerArgument()
         {
-            var text = "class c { void m() { ++a[e if(e) {} } }";
+            var text = "class c { void m() { ++a[e om(e) {} } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);
@@ -3694,7 +3694,7 @@ class C
         [Fact]
         public void TestStatementAfterIndexerArgumentAndComma()
         {
-            var text = "class c { void m() { ++a[e, if(e) {} } }";
+            var text = "class c { void m() { ++a[e, om(e) {} } }";
             var file = this.ParseTree(text);
 
             Assert.NotNull(file);

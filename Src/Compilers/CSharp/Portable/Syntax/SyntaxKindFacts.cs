@@ -966,7 +966,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                     return SyntaxKind.FalseKeyword;
                 case "default":
                     return SyntaxKind.DefaultKeyword;
-                case "if":
+                case "om":
                     return SyntaxKind.IfKeyword;
                 case "else":
                     return SyntaxKind.ElseKeyword;

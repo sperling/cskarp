@@ -45,7 +45,22 @@
       ShadowCopy="false" />
   </Target>
 
+  <Target Name="TestCSharpSyntaxAndSemantic">
+    <ItemGroup>
+	  <TestAssemblies Include="Binaries\$(Configuration)\**\Roslyn.Compilers.CSharp.Syntax.UnitTests.dll" />
+      <TestAssemblies Include="Binaries\$(Configuration)\**\Roslyn.Compilers.CSharp.Semantic.UnitTests.dll" />
+    </ItemGroup>
+
+
+    <xunit
+      Assemblies="@(TestAssemblies)"
+      Html="CSharpSyntaxAndSemanticUnitTestResults.html"
+      ShadowCopy="false" />
+  </Target>
+  
   <Target Name="BuildAndTest"
           DependsOnTargets="Build;Test" />
 
+  <Target Name="BuildAndTestCSharpSyntaxAndSemantic"
+          DependsOnTargets="Build;TestCSharpSyntaxAndSemantic" />
 </Project>

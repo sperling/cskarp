@@ -2095,7 +2095,7 @@ x
         public void TestSingleLineXmlCommentBeforePreprocessorDirective()
         {
             var text = @"///<foo></foo>
-# if DOODAD
+# om DOODAD
 # endif";
             var tree = Parse(text);
 
@@ -2124,7 +2124,7 @@ x
         [Fact]
         public void TestSingleLineXmlCommentAfterPreprocessorDirective()
         {
-            var text = @"# if DOODAD
+            var text = @"# om DOODAD
 # endif
 ///<foo></foo>";
             var tree = Parse(text);
