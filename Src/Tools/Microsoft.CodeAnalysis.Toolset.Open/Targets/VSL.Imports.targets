@@ -3,7 +3,6 @@
 
   <!-- This file is imported by all projects at the end of the project files -->
   <PropertyGroup Condition="'$(OpenSourceDebug)' == 'true'">
-    <DeployVSVersion>12.0</DeployVSVersion>
     <DeployVSHive>Roslyn</DeployVSHive>
     <DeployToPackageFolders>true</DeployToPackageFolders>
     <NonShipping Condition="'$(NonShipping)' == ''">false</NonShipping>
@@ -61,7 +60,8 @@
     <BuildDependsOn>
       $(BuildDependsOn);
       CopyCppOutputBackToIntDir;
-      DeployToPreviewPackageFolders;
+      DeployToPreviewPackageFolders12;
+      DeployToPreviewPackageFolders14;
     </BuildDependsOn>
   </PropertyGroup>
 
@@ -114,16 +114,13 @@
   </Target>
 
   <!-- ====================================================================================
-  
-        Deploy binary to Preview Package folders
-
-    ==================================================================================== -->
-
-  <Target Name="DeployToPreviewPackageFolders" Condition="'$(DeployToPackageFolders)' == 'true'">
+        Deploy binary to 12.0 Package folders 
+  ===================================================================================== -->
+  <Target Name="DeployToPreviewPackageFolders12" Condition="'$(DeployToPackageFolders)' == 'true' and '$(DeployVSVersion)' == '14.0'">
     <ItemGroup>
-      <FilesToCopy Include="$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(DeployVSVersion)$(DeployVSHive)\Extensions\**\$(TargetName)$(TargetExt)" />
-      <ConfigsToCopy Include="$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(DeployVSVersion)$(DeployVSHive)\Extensions\**\$(TargetName)$(TargetExt).Config" />
-      <FilesToDelete Include="$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(DeployVSVersion)$(DeployVSHive)\Extensions\**\extensions.$(PreferredUILang).cache;$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(DeployVSVersion)$(DeployVSHive)\ComponentModelCache\**\*.cache;$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(DeployVSVersion)$(DeployVSHive)\Extensions\**\extensionSdks.$(PreferredUILang).cache; $(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(DeployVSVersion)$(DeployVSHive)\Extensions\**\vssqmmulti.dll;" />
+      <FilesToCopy   Include="$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(VisualStudioVersion)$(DeployVSHive)\Extensions\**\$(TargetName)$(TargetExt)" />
+      <ConfigsToCopy Include="$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(VisualStudioVersion)$(DeployVSHive)\Extensions\**\$(TargetName)$(TargetExt).Config" />
+      <FilesToDelete Include="$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(VisualStudioVersion)$(DeployVSHive)\Extensions\**\extensions.$(PreferredUILang).cache;$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(VisualStudioVersion)$(DeployVSHive)\ComponentModelCache\**\*.cache;$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(VisualStudioVersion)$(DeployVSHive)\Extensions\**\extensionSdks.$(PreferredUILang).cache; $(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(VisualStudioVersion)$(DeployVSHive)\Extensions\**\vssqmmulti.dll;" />
     </ItemGroup>
 
     <Message Text="Source: @(FilesToCopy->'$(OutDir)%(Filename)%(Extension)')"/>
@@ -136,6 +133,29 @@
     <Delete Files="@(FilesToDelete)" />
   </Target>
 
+  <!-- ====================================================================================
+        Deploy binary to 14.0 Package folders 
+  ===================================================================================== -->
+  <Target Name="DeployToPreviewPackageFolders14" Condition="'$(DeployToPackageFolders)' == 'true' and '$(VisualStudioVersion)' == '14.0'">
+    <PropertyGroup>
+      <RoslynOssComponentPath>$(UserProfile)\AppData\Local\Microsoft\VisualStudio\$(VisualStudioVersion)$(DeployVSHive)\Extensions\RoslynOssComponent</RoslynOssComponentPath>
+      <TargetConfigFile>$(TargetPath).config</TargetConfigFile>
+      <TargetPdb>$(TargetDir)$(TargetName).pdb</TargetPdb>
+    </PropertyGroup>
+    <ItemGroup>
+      <CopySources Condition="('$(TargetExt)' == '.dll' or '$(TargetExt)' == '.exe') and Exists($(TargetPath))" Include="$(TargetPath)"/>
+      <CopySources Condition="('$(TargetExt)' == '.dll' or '$(TargetExt)' == '.exe') and Exists($(TargetPdb))" Include="$(TargetPdb)"/>
+      <CopySources Condition="'$(TargetExt)' == '.exe' and Exists($(TargetConfigFile))" Include="$(TargetConfigFile)"/>
+    </ItemGroup>
+
+    <Message Text="TargetExt:       $(TargetExt)"/>
+    <Message Text="TargetPath:      $(TargetPath)"/>
+    <Message Text="TargetPdb:       $(TargetPdb)"/>
+    <Message Text="Source:          @(CopySources)"/>
+
+    <Message Text="Destination:     $(RoslynOssComponentPath)"/>
+    <Copy SourceFiles="@(CopySources)" DestinationFolder="$(RoslynOssComponentPath)" />
+  </Target>
   <!-- ====================================================================================
   
          Support for a IncludeInVSIXLocalOnly Content metadata

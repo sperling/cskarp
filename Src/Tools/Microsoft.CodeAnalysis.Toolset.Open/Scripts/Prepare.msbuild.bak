@@ -11,7 +11,7 @@
     ==================================================================================== -->
   <UsingTask TaskName="EnableExtension" AssemblyFile="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.Build.Tasks.dll" />
   <ItemGroup>
-    <_VSIXId Include="EnableOpenSourceDebug..8d310cd3-2085-486c-9b0c-e10cb26eeac6" /><!-- RoslynOssComponent VSIX GUID -->
+    <_VSIXId Include="8d310cd3-2085-486c-9b0c-e10cb26eeac6" /><!-- RoslynOssComponent VSIX GUID -->
   </ItemGroup>
 
   <Target Name="Build" Inputs="@(_VSIXId)"  Outputs="%(Identity).Dummy">

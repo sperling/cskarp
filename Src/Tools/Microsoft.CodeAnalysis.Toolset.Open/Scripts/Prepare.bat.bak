@@ -48,7 +48,7 @@ if not "%unconfigure%" == "true" (
 
 if not "%unconfigure%" == "true" (
     "%VSSDK140Install%\VisualStudioIntegration\Tools\Bin\CreateExpInstance.exe" /Reset /VSInstance=%targetVS% /RootSuffix=%TargetHive%  2> nul
-	md %UserProfile%\AppData\Local\Microsoft\VisualStudio\%targetVS%%TargetHive%\Extensions\RoslynOssComponent 2> nul
+	md C:\Users\kevinr\AppData\Local\Microsoft\VisualStudio\%targetVS%%TargetHive%\Extensions\RoslynOssComponent 2> nul
 	copy %~dp0\extension.vsixmanifest   %UserProfile%\AppData\Local\Microsoft\VisualStudio\%targetVS%%TargetHive%\Extensions\RoslynOssComponent
 	copy %~dp0\enableopensource.pkgdef  %UserProfile%\AppData\Local\Microsoft\VisualStudio\%targetVS%%TargetHive%\Extensions\RoslynOssComponent
 	msbuild %~dp0\prepare.msbuild
@@ -73,6 +73,24 @@ call :DisableVerificationFor "Roslyn.Compilers.BuildTasks,31BF3856AD364E35"
 call :DisableVerificationFor "csc,31BF3856AD364E35"
 call :DisableVerificationFor "vbc,31BF3856AD364E35"
 call :DisableVerificationFor "VBCSCompiler,31BF3856AD364E35"
+
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.CSharp.Desktop.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.CSharp.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.CSharp.Workspaces.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.Desktop.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.FxCopAnalyzers.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.VisualBasic.Desktop.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.VisualBasic.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.VisualBasic.FxCopAnalyzers.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll"
+"codeBase"="$PackageFolder$\Microsoft.CodeAnalysis.Workspaces.dll"
+"codeBase"="$PackageFolder$\Roslyn.SyntaxVisualizer.Control.dll"
+"codeBase"="$PackageFolder$\Roslyn.SyntaxVisualizer.DgmlHelper.dll"
+
+
+
 
 rem List skip verification entries
 echo.

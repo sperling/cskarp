@@ -47,7 +47,7 @@
   <PropertyGroup>
     <StartAction>Program</StartAction>
     <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
-    <StartArguments>/rootsuffix RoslynDev /log</StartArguments>
+    <StartArguments>/rootsuffix Roslyn /log</StartArguments>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
