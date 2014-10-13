@@ -156,3 +156,6 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+
+# CSharp syntax and semantic test results
+CSharpSyntaxAndSemanticUnitTestResults.html
